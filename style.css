@@ -38,6 +38,16 @@ button:hover, form .btn-enviar input:hover{
     transform: scale(1.07);
 }
 
+h2.titulo{
+    color: white;
+    font-size: 38px;
+    text-align: center;  
+}
+
+h2.titulo span{
+    color: #2805fc;
+}
+
 /* ESTILO DO CABEÇALHO */
 
 header{
@@ -69,16 +79,6 @@ header nav ul {
 header nav ul li{
     display: inline-block;
     padding: 0 40px;
-}
-
-h2.titulo{
-    color: white;
-    font-size: 38px;
-    text-align: center;  
-}
-
-h2.titulo span{
-    color: #2805fc;
 }
 
 /* ESTILO DO TOPO DO SITE */
@@ -129,7 +129,7 @@ section.especialidades {
 }
 
 section.especialidades .flex {
-    display: grid;
+    display: flex;
     grid-template-columns: repeat(3, 1fr);
     gap: 40px;
     margin-top: 45px;
@@ -332,3 +332,93 @@ footer .line-footer a{
     color: white;
 }
 
+/* DEIXANDO SITE RESPONSIVO */
+
+@media screen and (max-width: 1020px){
+
+    /* CLASSES GERAIS */
+
+    .flex{
+        flex-direction: column;
+    }
+
+    .topo-do-site .flex{
+        flex-direction: column-reverse;
+    }
+
+    h2.titulo{
+    font-size: 34px;
+    line-height: 30px;  
+}
+
+    /* CABEÇALHO */
+
+    .menu-desktop, .btn-contato{
+        display: none;
+    }
+
+    /* TOPO DO SITE */
+
+    .txt-topo-site h1{
+    font-size: 30px;
+    }
+
+    section.topo-do-site{
+        padding: 20px 8%;
+    }
+
+    .topo-do-site .img-topo-site img{
+        width: 100%;
+    }
+
+    section.topo-do-site .flex{
+        gap: 40px;
+    }
+
+    /* ESTILO DAS ESPECIALIDADES */
+
+    section.especialidades {
+        padding: 40px 8%;
+    }
+
+    /* ESTILO SOBRE */
+
+    section.sobre{
+        padding: 80px 8%;
+    }
+
+    .sobre .flex{
+        flex-direction: column-reverse;
+    }
+
+    .sobre .txt-sobre h2{
+    font-size: 34px;
+    line-height: 35px;
+    text-align: center;
+    }
+
+    .btn-social{
+        text-align: center;
+    }
+
+    .img-sobre img{
+        width: 100%;
+    }
+
+    /* ESTILO DO PORTIFÓLIO */
+
+    section.portfolio{
+        padding: 80px 8%;
+    }
+
+    .img-port{
+    width: 100%;
+    max-width: 360px;
+    margin: 0 auto;
+    }
+
+    section.portfolio .flex{
+    gap: 60px;
+}
+
+}
