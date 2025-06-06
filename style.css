@@ -6,15 +6,19 @@
     font-family: "Poppins", sans-serif;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background-color: #000;
-    height: 100vh;
-
+    min-height: 100vh; /* Alterado de height para min-height para garantir que o body cresça com o conteúdo */
 }
 
 .interface{
     max-width: 1280px;
-    margin: 0;
+    margin: 0 auto; /* CORRIGIDO: Adicionado auto para centralizar o container */
+    padding: 0 4%; /* Adicionado padding lateral para telas menores que 1280px */
 }
 
 .flex{
@@ -51,7 +55,7 @@ h2.titulo span{
 /* ESTILO DO CABEÇALHO */
 
 header{
-    padding: 10px 4%;
+    padding: 10px 0; /* Ajustado padding: 10px 4% para 10px 0, a interface já tem 4% */
 }
 
 header > .interface{
@@ -81,10 +85,89 @@ header nav ul li{
     padding: 0 40px;
 }
 
+/* NOVO: Estilo do ícone do menu hambúrguer */
+.btn-abrir-menu i {
+    color: #2805fc;
+    font-size: 40px;
+    display: none; /* OCULTO POR PADRÃO, SÓ APARECE NO RESPONSIVO */
+    cursor: pointer;
+}
+
+/* NOVO: Estilo do menu mobile */
+.menu-mobile {
+    background-color: #000;
+    height: 100vh;
+    width: 0%; /* OCULTO POR PADRÃO */
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 99999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: .5s;
+}
+
+.menu-mobile.abrir-menu {
+    width: 70%;
+}
+
+.menu-mobile .btn-fechar-menu {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.menu-mobile .btn-fechar-menu i {
+    color: #2805fc;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.menu-mobile nav ul {
+    text-align: center;
+}
+
+.menu-mobile nav ul li {
+    list-style-type: none;
+    display: block;
+    margin: 20px 0;
+}
+
+.menu-mobile nav ul li a {
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+    transition: .3s;
+}
+
+.menu-mobile nav ul li a:hover {
+    color: #2805fc;
+    transform: scale(1.1);
+}
+
+/* NOVO: Overlay do menu mobile */
+.overlay-menu {
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99998;
+    display: none; /* OCULTO POR PADRÃO */
+}
+
+.menu-mobile.abrir-menu ~ .overlay-menu { /* Mostra o overlay quando o menu está aberto */
+    display: block; 
+}
+
+
 /* ESTILO DO TOPO DO SITE */
 
 section.topo-do-site{
-    padding: 40px 4%;
+    padding: 40px 0; /* Ajustado padding: 40px 4% para 40px 0, a interface já tem 4% */
 }
 
 section.topo-do-site .flex{
@@ -125,11 +208,11 @@ section.topo-do-site .flex{
 /* ESTILO DAS ESPECIALIDADES */
 
 section.especialidades {
-    padding: 40px 4%;
+    padding: 40px 0; /* Ajustado padding: 40px 4% para 40px 0, a interface já tem 4% */
 }
 
 section.especialidades .flex {
-    display: flex;
+    display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 40px;
     margin-top: 45px;
@@ -162,7 +245,7 @@ section.especialidades .flex {
 /* ESTILO SOBRE */
 
 section.sobre{
-    padding: 80px 4%;
+    padding: 80px 0; /* Ajustado padding: 80px 4% para 80px 0, a interface já tem 4% */
 }
 
 section.sobre .flex{
@@ -205,7 +288,7 @@ section.sobre .flex{
 /* ESTILO DO PORTIFÓLIO */
 
 section.portfolio{
-    padding: 80px 4%;
+    padding: 80px 0; /* Ajustado padding: 80px 4% para 80px 0, a interface já tem 4% */
     box-shadow: 0 0 40px 10px #ffffff1d;
 }
 
@@ -254,7 +337,7 @@ section.portfolio .flex{
 /* ESTILO DO FORMULÁRIO DE SESSÃO */
 
 section.formulario{
-    padding: 80px 4%;
+    padding: 80px 0; /* Ajustado padding: 80px 4% para 80px 0, a interface já tem 4% */
 }
 
 form{
@@ -300,7 +383,7 @@ form .btn-enviar input{
 /* ESTILO DO RODAPÉ */
 
 footer {
-    padding: 15px 4%;
+    padding: 15px 0; /* Ajustado padding: 15px 4% para 15px 0, a interface já tem 4% */
     box-shadow: 0 0 40px 10px #ffffff1d;
 }
 
@@ -337,7 +420,6 @@ footer .line-footer a{
 @media screen and (max-width: 1020px){
 
     /* CLASSES GERAIS */
-
     .flex{
         flex-direction: column;
     }
@@ -347,24 +429,26 @@ footer .line-footer a{
     }
 
     h2.titulo{
-    font-size: 34px;
-    line-height: 30px;  
-}
+        font-size: 34px;
+        line-height: 30px;
+    }
 
-    /* CABEÇALHO */
-
+    /* CABEÇALHO - AJUSTES PARA RESPONSIVO */
     .menu-desktop, .btn-contato{
-        display: none;
+        display: none; /* Oculta o menu desktop e o botão de contato */
+    }
+
+    .btn-abrir-menu i{
+        display: block; /* MOSTRADO: Mostra o ícone do hambúrguer apenas em telas menores */
     }
 
     /* TOPO DO SITE */
-
     .txt-topo-site h1{
-    font-size: 30px;
+        font-size: 30px;
     }
 
     section.topo-do-site{
-        padding: 20px 8%;
+        padding: 20px 0; /* Ajustado para usar o padding da interface */
     }
 
     .topo-do-site .img-topo-site img{
@@ -376,15 +460,19 @@ footer .line-footer a{
     }
 
     /* ESTILO DAS ESPECIALIDADES */
-
     section.especialidades {
-        padding: 40px 8%;
+        padding: 40px 0; /* Ajustado para usar o padding da interface */
+    }
+
+    section.especialidades .flex {
+        display: grid; /* MANTIDO: Display grid */
+        grid-template-columns: 1fr; /* CORRIGIDO: Uma coluna para telas menores */
+        gap: 30px; /* Ajuste o gap se desejar */
     }
 
     /* ESTILO SOBRE */
-
     section.sobre{
-        padding: 80px 8%;
+        padding: 80px 0; /* Ajustado para usar o padding da interface */
     }
 
     .sobre .flex{
@@ -392,9 +480,9 @@ footer .line-footer a{
     }
 
     .sobre .txt-sobre h2{
-    font-size: 34px;
-    line-height: 35px;
-    text-align: center;
+        font-size: 34px;
+        line-height: 35px;
+        text-align: center;
     }
 
     .btn-social{
@@ -406,19 +494,17 @@ footer .line-footer a{
     }
 
     /* ESTILO DO PORTIFÓLIO */
-
     section.portfolio{
-        padding: 80px 8%;
+        padding: 80px 0; /* Ajustado para usar o padding da interface */
     }
 
     .img-port{
-    width: 100%;
-    max-width: 360px;
-    margin: 0 auto;
+        width: 100%;
+        max-width: 360px;
+        margin: 0 auto;
     }
 
     section.portfolio .flex{
-    gap: 60px;
-}
-
+        gap: 60px;
+    }
 }
